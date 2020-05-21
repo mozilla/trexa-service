@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    html {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+</style>
+<h1>Downloads</h1>
+<ul>
+    {% for file in files %}
+    <li>
+        <a download href="lists/{{ file }}">{{ file }}</a>
+    </li>
+    {% endfor %}
+</ul>
