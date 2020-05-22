@@ -15,6 +15,10 @@ code has been rewritten here to be more flexible.
 
 And then go to the next section to start the service.
 
+## Running the tests
+
+`FLASK_ENV=development pytest`
+
 ## Starting the service
 
 From the project root, depending on your needs:
