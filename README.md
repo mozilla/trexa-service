@@ -43,9 +43,9 @@ FINAL_LIST_DEST
 
 This app exposes the following HTTP endpoints
 
-`/lists`: see all lists available for download
-`/lists/trexa-2020-05-21.csv`: download a full, single list (150,000+ sites)
-`/api/download/trexa-2020-05-21.csv?count=N`: download a single list, trimmed to N sites
+* `/lists`: see all lists available for download 
+* `/lists/trexa-2020-05-21.csv`: download a full, single list (150,000+ sites) 
+* `/api/download/trexa-2020-05-21.csv?count=N`: download a single list, trimmed to N sites 
 
 ## License
 
