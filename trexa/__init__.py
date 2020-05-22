@@ -3,7 +3,8 @@ import os
 from flask import abort
 from flask import Flask
 from flask import render_template
-from flask import send_from_directory
+from flask import safe_join
+from flask import send_file
 from flask import url_for
 import markdown
 
@@ -43,8 +44,8 @@ if app.config['ENV'] == 'development':
         """Dev-only route to serve downloads.
 
         NGINX will handle static assets on the production server."""
-        lists_path = os.path.join(app.root_path, 'static/lists')
-        if not os.path.exists(f'{lists_path}/{file_name}'):
+        file_path = safe_join(
+            os.path.abspath(app.config['FINAL_LIST_DEST']), file_name)
+        if not os.path.exists(file_path):
             return abort(404)
-        return send_from_directory('static/lists', file_name,
-                                   as_attachment=True, mimetype='text/csv')
+        return send_file(file_path, as_attachment=True, mimetype='text/csv')
