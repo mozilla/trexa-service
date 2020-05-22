@@ -9,14 +9,10 @@ def trim_csv(csv_file, count=None):
     {count} should come in a stringy int, if it doesn't then
     just treat it as None.
     """
-    if count:
-        try:
-            if count.isdigit():
-                count = int(count)
-        except Exception:
-            pass
-        else:
-            count = None
+    try:
+        count = int(count)
+    except (ValueError, TypeError):
+        count = None
     with open(csv_file, 'r') as csv:
         for line in islice(csv, count):
             yield line
