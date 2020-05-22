@@ -28,10 +28,6 @@ def trim_file(filename):
     by sending None to trim_csv.
     """
     count = request.args.get('count')
-    if count.isdigit():
-        count = int(count)
-    else:
-        count = None
     csv_path = os.path.join(current_app.root_path, 'static/lists', filename)
     if not os.path.exists(csv_path):
         return abort(404)
