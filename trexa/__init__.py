@@ -39,7 +39,7 @@ def show_downloads():
 
 
 if app.config['ENV'] == 'development':
-    @app.route('/lists/<file_name>')
+    @app.route('/lists/<path:file_name>')
     def serve_downloads(file_name):
         """Dev-only route to serve downloads.
 

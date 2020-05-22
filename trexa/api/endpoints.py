@@ -5,6 +5,7 @@ from flask import Blueprint
 from flask import current_app
 from flask import request
 from flask import Response
+from flask import safe_join
 
 from trexa.api.helpers import trim_csv
 
@@ -20,15 +21,16 @@ def index():
     return abort(403)
 
 
-@api_bp.route('/lists/<path:filename>')
-def trim_file(filename):
+@api_bp.route('/lists/<path:file_name>')
+def trim_file(file_name):
     """API route to serve count-limited lists.
 
     If there's no count arg (or its garbage), just serve the whole thing
     by sending None to trim_csv.
     """
     count = request.args.get('count')
-    csv_path = os.path.join(current_app.root_path, 'static/lists', filename)
+    csv_path = safe_join(os.path.abspath(
+        current_app.config['FINAL_LIST_DEST']), file_name)
     if not os.path.exists(csv_path):
         return abort(404)
     return Response(trim_csv(csv_path, count=count), mimetype='text/csv')
