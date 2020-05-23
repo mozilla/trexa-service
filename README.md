@@ -13,7 +13,7 @@ code has been rewritten here to be more flexible.
 3. run `source env/bin/activate`
 4. run `pip3 install -r requirements.txt`
 
-And then go to the next section to start the service.
+And then go to the next section to run tests or start the service.
 
 ## Running the tests
 
@@ -21,12 +21,14 @@ And then go to the next section to start the service.
 
 ## Starting the service
 
-From the project root, depending on your needs:
+From the project root:
 
-`FLASK_APP=trexa flask run`
+Production mode:
+`FLASK_APP=trexa flask run --host=0.0.0.0`
 
 or
 
+Development mode:
 `FLASK_ENV=development FLASK_APP=trexa flask run`
 
 ## Environment variables
