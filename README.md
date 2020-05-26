@@ -45,12 +45,17 @@ FINAL_LIST_DEST
 
 This app exposes the following HTTP endpoints
 
-* `/lists`: see all lists available for download 
-* `/lists/trexa-2020-05-21.csv`: download a full, single list (150,000+ sites) 
-* `/api/download/trexa-2020-05-21.csv?count=N`: download a single list, trimmed to N sites 
+* `/lists`: see all lists available for download
+* `/lists/trexa-2020-05-21.csv`: download a full, single list (150,000+ sites)
+* `/api/download/trexa-2020-05-21.csv?count=N`: download a single list, trimmed to N sites
 
 ## License
 
 This Source Code Form is subject to the terms of the Mozilla Public
 License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at http://mozilla.org/MPL/2.0/
+
+## Code of Conduct
+
+This project and repository is governed by Mozilla's code of conduct and
+etiquette guidelines. For more details please see the [Code of Conduct](./CODE_OF_CONDUCT.md) file.
