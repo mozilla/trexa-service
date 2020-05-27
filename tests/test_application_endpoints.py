@@ -37,13 +37,15 @@ def test_lists_endpoint(client):
             b'_with_thirty_lines.csv">') in rv.data
 
 
-def test_list_download(client):
-    """This should only pass for local development or tests."""
-    rv = client.get('/lists/test_file_with_thirty_lines.csv')
-    assert rv.status_code == 200
-    assert 'text/csv' in rv.headers.get('content-type')
-    assert 'attachment' in rv.headers.get('content-disposition')
-    assert 'test_file_with_thirty_lines.csv' in rv.headers.get(
-        'content-disposition')
-    rv = client.get('/lists/garbage.pdf')
-    assert rv.status_code == 404
+if trexa.app.config['ENV'] == 'development':
+    def test_list_download(client):
+        """This should only pass for local development or tests."""
+        print(client.config)
+        rv = client.get('/lists/test_file_with_thirty_lines.csv')
+        assert rv.status_code == 200
+        assert 'text/csv' in rv.headers.get('content-type')
+        assert 'attachment' in rv.headers.get('content-disposition')
+        assert 'test_file_with_thirty_lines.csv' in rv.headers.get(
+            'content-disposition')
+        rv = client.get('/lists/garbage.pdf')
+        assert rv.status_code == 404
