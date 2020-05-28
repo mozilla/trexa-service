@@ -21,8 +21,8 @@ def index():
     return abort(403)
 
 
-@api_bp.route('/lists/<path:file_name>')
-def trim_file(file_name):
+@api_bp.route('/lists/<list_date>')
+def trim_file(list_date):
     """API route to serve count-limited lists.
 
     If there's no count arg (or its garbage), just serve the whole thing
@@ -30,7 +30,7 @@ def trim_file(file_name):
     """
     count = request.args.get('count')
     csv_path = safe_join(os.path.abspath(
-        current_app.config['FINAL_LIST_DEST']), file_name)
+        current_app.config['FINAL_LIST_DEST']), f'trexa-{list_date}.csv')
     if not os.path.exists(csv_path):
         return abort(404)
     return Response(trim_csv(csv_path, count=count), mimetype='text/csv')

@@ -5,7 +5,7 @@ from trexa.api.endpoints import trim_csv
 
 test_dir = os.path.dirname(os.path.abspath(__file__))
 test_csv = os.path.join(test_dir, 'fixtures',
-                        'test_file_with_thirty_lines.csv')
+                        'trexa-05-28-2020.csv')
 
 
 def get_csv_length(desired_length):

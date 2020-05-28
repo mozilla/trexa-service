@@ -33,8 +33,7 @@ def test_lists_endpoint(client):
     rv = client.get('/lists')
     assert rv.status_code == 200
     assert b'Downloads' in rv.data
-    assert (b'<a download href="lists/test_file'
-            b'_with_thirty_lines.csv">') in rv.data
+    assert b'<a download href="lists/trexa-05-28-2020.csv' in rv.data
 
 
 if trexa.app.config['ENV'] == 'development':

@@ -23,11 +23,11 @@ def test_index(client):
 
 def test_api_download(client):
     """Test downloading files from the API endpoint."""
-    rv = client.get('/api/lists/test_file_with_thirty_lines.csv')
+    rv = client.get('/api/lists/05-28-2020')
     assert rv.status_code == 200
-    rv = client.get('/api/lists/test_file_with_thirty_lines.csv?count=2')
+    rv = client.get('/api/lists/05-28-2020?count=2')
     assert rv.status_code == 200
-    rv = client.get('/api/lists/test_file_with_thirty_lines.csv?lol=wat')
+    rv = client.get('/api/lists/05-28-2020?lol=wat')
     assert rv.status_code == 200
     rv = client.get('/api/lists/what_in_the_world.py')
     assert rv.status_code == 404
@@ -35,12 +35,12 @@ def test_api_download(client):
 
 def test_api_download_length(client):
     """Test the count param works as expected."""
-    rv = client.get('/api/lists/test_file_with_thirty_lines.csv?count=10')
+    rv = client.get('/api/lists/05-28-2020?count=10')
     # pop off the last empty list item (because '\n' comes at the end)
     assert len(rv.data.split(b'\n')[:-1]) == 10
     assert b'11, login.tmall.com' not in rv.data
-    rv = client.get('/api/lists/test_file_with_thirty_lines.csv?a=b&count=10')
+    rv = client.get('/api/lists/05-28-2020?a=b&count=10')
     assert len(rv.data.split(b'\n')[:-1]) == 10
     assert b'11, login.tmall.com' not in rv.data
-    rv = client.get('/api/lists/test_file_with_thirty_lines.csv?count=')
+    rv = client.get('/api/lists/05-28-2020?count=')
     assert len(rv.data.split(b'\n')[:-1]) == 30
