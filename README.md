@@ -9,6 +9,7 @@ code has been rewritten here to be more flexible.
 ## Running locally
 
 1. clone the repo
+2. run `cd trexa-service`
 2. run `python3 -m venv env`
 3. run `source env/bin/activate`
 4. run `pip3 install -r requirements.txt`
