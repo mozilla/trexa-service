@@ -3,9 +3,6 @@
 This project aims to provide a weekly Trexa 100k list, which is created from the Tranco and Alexa lists. In theory it could be larger, so file an issue if that's
 useful to someone.
 
-The canonical repo for Trexa is https://github.com/mozilla/trexa, but the merge
-code has been rewritten here to be more flexible.
-
 ## Running locally
 
 1. clone the repo
