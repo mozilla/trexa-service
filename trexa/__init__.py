@@ -24,10 +24,9 @@ def index():
     This module isn't intended to serve a useful website, so we just dump
     the README.md as HTML.
     """
-    readme_file = open("README.md", "r")
-    md_template_string = markdown.markdown(
-        readme_file.read()
-    )
+    with open("README.md", "r") as f:
+        readme_file = f.read()
+    md_template_string = markdown.markdown(readme_file)
     return md_template_string
 
 
